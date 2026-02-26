@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Xuân Lớp 12 – Báo Tường  Điện Tử</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Petal effects container removed: petals will be appended directly to the body by the new script -->
+    <!-- ==================== AUDIO BACKGROUND ==================== -->
+    <!-- Âm thanh nền tự động phát (lưu ý: một số trình duyệt sẽ chặn autoplay nếu chưa có tương tác) -->
+    <audio id="bg-audio" autoplay loop preload="auto">
+        <source src="song.mp3" type="audio/mp3">
+        Trình duyệt của bạn không hỗ trợ phát âm thanh.
+    </audio>
+
+    <!-- Audio control prompt (shown if autoplay is blocked) -->
+    <button id="audio-control" class="audio-control" aria-pressed="false" aria-label="Bật âm nhạc nền">🔈</button>
+
+    <!-- Petal / Text effect controls -->
+    <div id="petal-controls" aria-hidden="false">
+        <button id="effects-toggle" class="effect-control" aria-pressed="true" aria-label="Bật/Tắt hiệu ứng">Hiệu ứng: On</button>
+    </div>
+
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Trang chủ</a></li>
+                
+                <!-- Dropdown Menu for Classes -->
+                <li class="nav-item dropdown">
+                    <a href="#memories" class="nav-link dropdown-toggle">Lớp <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#grade10" class="dropdown-link">Kỷ niệm lớp 10</a></li>
+                        <li><a href="#grade11" class="dropdown-link">Kỷ niệm lớp 11</a></li>
+                        <li><a href="#grade12" class="dropdown-link">Kỷ niệm lớp 12</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item"><a href="#message" class="nav-link">Lời nhắn gửi</a></li>
+                <li class="nav-item"><a href="#gallery" class="nav-link">Album ảnh</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION (TRANG CHỦ) ==================== -->
+    <section id="home" class="hero-section">
+        <div class="hero-carousel" aria-label="Slideshow" aria-roledescription="carousel">
+            <div class="slides">
+                <div class="slide active" data-index="0" style="background-image: url('https://picsum.photos/1920/1080?random=101')">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">THANH XUÂN LỚP 12</h1>
+                        <p class="hero-subtitle">Ba năm – Một hành trình – Cả đời không quên</p>
+                        <a href="#memories" class="hero-btn">Xem kỷ niệm</a>
+                    </div>
+                </div>
+
+                <div class="slide" data-index="1" style="background-image: url('https://picsum.photos/1920/1080?random=102')">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">Những Kỷ Niệm</h1>
+                        <p class="hero-subtitle">Những khoảnh khắc không thể nào quên</p>
+                        <a href="#gallery" class="hero-btn">Xem album</a>
+                    </div>
+                </div>
+
+                <div class="slide" data-index="2" style="background-image: url('https://picsum.photos/1920/1080?random=103')">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">Bạn Bè & Thầy Cô</h1>
+                        <p class="hero-subtitle">Cảm ơn những người đi cùng ta</p>
+                        <a href="#tribute" class="hero-btn">Gửi lời tri ân</a>
+                    </div>
+                </div>
+
+                <div class="slide" data-index="3" style="background-image: url('https://picsum.photos/1920/1080?random=104')">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">Bước Ra Thế Giới</h1>
+                        <p class="hero-subtitle">Chúc bạn hành trình mới an lành</p>
+                        <a href="#contact" class="hero-btn">Gửi lời nhắn</a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-btn prev" aria-label="Previous slide">&#10094;</button>
+            <button class="carousel-btn next" aria-label="Next slide">&#10095;</button>
+
+            <div class="carousel-indicators" role="tablist" aria-label="Slide indicators">
+                <button class="indicator active" data-slide-to="0" aria-label="Go to slide 1" role="tab" aria-selected="true"></button>
+                <button class="indicator" data-slide-to="1" aria-label="Go to slide 2" role="tab" aria-selected="false"></button>
+                <button class="indicator" data-slide-to="2" aria-label="Go to slide 3" role="tab" aria-selected="false"></button>
+                <button class="indicator" data-slide-to="3" aria-label="Go to slide 4" role="tab" aria-selected="false"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== LỜI NHẮN GỬI TUỔI THANH XUÂN ==================== -->
+    <section id="message" class="message-section">
+        <div class="container">
+            <h2 class="section-title">Lời Nhắn Gửi Tuổi Thanh Xuân</h2>
+            <div class="message-content">
+                <p class="message-text">
+                    Ba năm trước, chúng ta bước vào cổng trường với bao bỡ ngỡ, nụ cười e ngại và những ước mơ bay xa. 
+                    Những ngày đầu làm quen với bạn mới, những tiếng cười trong giờ ra chơi, những buổi học nhóm 
+                    căng thẳng trước mỗi kỳ thi – tất cả đã trở thành những kỷ niệm đẹp nhất của cuộc đời.
+                </p>
+                <p class="message-text">
+                    Chúng ta đã cùng nhau trải qua bao nhiêu kỷ niệm: từ những ngày hè nóng bức trong phòng học, 
+                    đến những buổi sinh hoạt vui vẻ, những chuyến đi dã ngoại đầy ắp tiếng cười. 
+                    Có những lúc chúng ta mệt mỏi với áp lực học tập, có những đêm thức trắng ôn thi, 
+                    nhưng bên cạnh luôn có những người bạn động viên, chia sẻ.
+                </p>
+                <p class="message-text">
+                    Giờ đây, khi đứng ở cuối con đường thanh xuân, chúng ta nhìn lại và thấy rằng: 
+                    những gì đẹp nhất không phải là điểm số hay thành tích, mà là những khoảnh khắc 
+                    được sống cùng nhau, những tình bạn được gieo mầm và những kỷ niệm 
+                    mãi không phai. Dù sau này mỗi người một ngã, nhưng những năm tháng này 
+                    sẽ mãi là một phần không thể quên trong trái tim mỗi chúng ta.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== KỶ NIỆM LỚP 10 ==================== -->
+    <section id="grade10" class="memories-section">
+        <div class="container">
+            <h2 class="section-title">📘 Kỷ Niệm Lớp 10</h2>
+            <p class="section-subtitle">Những ngày đầu bỡ ngỡ và những nụ cười e ngại</p>
+            
+            <div class="memories-grid">
+                <div class="memories-text">
+                    <h3>Những Ngày Đầu Nhập Học</h3>
+                    <p>
+                        Ai cũng nhớ buổi đầu tiên bước vào lớp 10, tim đập loạn xạ, 
+                        mồ hôi lạnh toát khi thầy cô gọi tên. Chúng ta ngồi nhìn nhau 
+                        với ánh mắt xa lạ, không biết ai sẽ trở thành bạn thân sau này. 
+                        Nhưng rồi, chỉ sau vài tuần, cả lớp đã như một gia đình.
+                    </p>
+                    <h3>Làm Quen Bạn Mới</h3>
+                    <p>
+                        Những cuộc trò chuyện đầu tiên, những cái tên phải nhớ, 
+                        những sở thích được chia sẻ. Chúng ta cùng nhau ăn trưa, 
+                        cùng nhau đi học, cùng nhau giải những bài toán khó. 
+                        Tình bạn được hình thành từ những điều giản dị nhất.
+                    </p>
+                    <h3>Những Trò Nghịch Ngợm</h3>
+                    <p>
+                        Giờ ra chơi là lúc cả lớp náo nức: đá cầu, chơi điện tử, 
+                        kể chuyện tiếu lâm. Những trò đùa nghịch ngợm, những tiếng cười 
+                        vang dội – tất cả đã in sâu vào ký ức mỗi người.
+                    </p>
+                </div>
+                
+                <div class="memories-media">
+                    <div class="media-grid">
+                        <img src="anh10.png" alt="Kỷ niệm lớp 10 - Ảnh 1" class="memory-img">
+                        <img src="2anh10.png" alt="Kỷ niệm lớp 10 - Ảnh 2" class="memory-img">
+                        <div class="video-container">
+                            <video controls poster="https://picsum.photos/400/300?random=3">
+                                <source src="vid1.mp4" type="video/mp4">
+                                Trình duyệt không hỗ trợ video.
+                            </video>
+                        </div>
+                        <img src="https://picsum.photos/400/300?random=4" alt="Kỷ niệm lớp 10 - Ảnh 3" class="memory-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== KỶ NIỆM LỚP 11 ==================== -->
+    <section id="grade11" class="memories-section alt-bg">
+        <div class="container">
+            <h2 class="section-title">📗 Kỷ Niệm Lớp 11</h2>
+            <p class="section-subtitle">Những hoạt động sôi nổi và tiếng cười rộn rã</p>
+            
+            <div class="memories-grid reverse">
+                <div class="memories-text">
+                    <h3>Hoạt Động Ngoại Khóa</h3>
+                    <p>
+                        Lớp 11 là năm chúng ta có nhiều hoạt động ngoại khóa nhất: 
+                        tham quan di tích lịch sử, học tập tại bảo tàng, những chuyến 
+                        đi dã ngoại đầy ắp tiếng cười. Đó là những ngày được thoát khỏi 
+                        sách vở, được khám phá thế giới bên cạnh bạn bè.
+                    </p>
+                    <h3>Hội Trại</h3>
+                    <p>
+                        Đêm hội trại là khoảnh khắc không thể nào quên: ánh lửa 
+                        bập bùng, những bài hát vang vọng, những trò chơi tập thể. 
+                        Cả lớp cùng nhau gắn kết, cùng nhau tạo nên những kỷ niệm 
+                        đẹp đẽ nhất của tuổi trẻ.
+                    </p>
+                    <h3>Các Tiết Học Đáng Nhớ</h3>
+                    <p>
+                        Những tiết học Văn với thầy cô kể chuyện đời xưa, 
+                        những tiết Toán với những công thức phức tạp, 
+                        những tiết Sinh với các thí nghiệm thú vị. 
+                        Mỗi tiết học đều mang lại những bài học quý giá.
+                    </p>
+                </div>
+                
+                <div class="memories-media">
+                    <div class="media-grid">
+                        <img src="3anh10.png" alt="Kỷ niệm lớp 11 - Ảnh 1" class="memory-img">
+                        <div class="video-container">
+                            <video controls poster="https://picsum.photos/400/300?random=6">
+                                <source src="vid2.mp4" type="video/mp4">
+                                Trình duyệt không hỗ trợ video.
+                            </video>
+                        </div>
+                        <img src="https://picsum.photos/400/300?random=7" alt="Kỷ niệm lớp 11 - Ảnh 2" class="memory-img">
+                        <img src="https://picsum.photos/400/300?random=8" alt="Kỷ niệm lớp 11 - Ảnh 3" class="memory-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== KỶ NIỆM LỚP 12 ==================== -->
+    <section id="grade12" class="memories-section">
+        <div class="container">
+            <h2 class="section-title">📕 Kỷ Niệm Lớp 12</h2>
+            <p class="section-subtitle">Những ngày cuối cùng và lời hẹn mai sau</p>
+            
+            <div class="memories-grid">
+                <div class="memories-text">
+                    <h3>Ôn Thi Tốt Nghiệp</h3>
+                    <p>
+                        Năm lớp 12 là năm của những đêm thức trắng, những chồng 
+                        sách vở cao như núi, những bài tập dồn dập. Nhưng bên cạnh 
+                        sự căng thẳng, chúng ta có những người bạn cùng nhau vượt qua, 
+                        những lời động viên ấm áp, những khoảnh khắc nghỉ ngơi 
+                        quý giá bên nhau.
+                    </p>
+                    <h3>Chụp Kỷ Yếu</h3>
+                    <p>
+                        Những bộ ảnh kỷ yếu, những bức ảnh chụp cùng nhau lần cuối, 
+                        những nụ cười rạng rỡ trước ống kính. Mỗi bức                     ảnh đều chứa đựng một câu chuyện, một kỷ niệm, một tình cảm 
+                        sâu sắc. Chúng ta cùng nhau diện áo dài, cùng nhau giơ tay 
+                        chào, cùng nhau ghi dấu những khoảnh khắc cuối cùng của 
+                        tuổi học trò.
+                    </p>
+                    <h3>Những Ngày Cuối Cùng Bên Nhau</h3>
+                    <p>
+                        Khi bước đi, chúng ta biết rằng đây là lần cuối cùng 
+                        được ngồi cùng một lớp, được nhìn thấy nhau mỗi ngày. 
+                        Những lời hẹn ước, những cái ôm chào tạm biệt, những giọt 
+                        nước mắt chảy dài trên má – tất cả đều là những khoảnh khắc 
+                        không thể nào quên trong cuộc đời mỗi người.
+                    </p>
+                </div>
+                
+                <div class="memories-media">
+                    <div class="media-grid">
+                        <img src="anh12.png" alt="Kỷ niệm lớp 12 - Ảnh 1" class="memory-img">
+                        <img src="c123.jpg" alt="Kỷ niệm lớp 12 - Ảnh 2" class="memory-img">
+                        <div class="video-container">
+                            <video controls poster="https://picsum.photos/400/300?random=11">
+                                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                                Trình duyệt không hỗ trợ video.
+                            </video>
+                        </div>
+                        <img src="https://picsum.photos/400/300?random=12" alt="Kỷ niệm lớp 12 - Ảnh 3" class="memory-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== THƯ TRI ÂN ==================== -->
+    <section id="tribute" class="tribute-section">
+        <div class="container">
+            <h2 class="section-title">Thư Tri Ân Thầy Cô</h2>
+            <!-- Envelope that opens the tribute letter -->
+            <div class="envelope-wrap">
+                <button id="envelope-btn" class="envelope" aria-expanded="false" aria-controls="tribute-letter" aria-label="Mở thư tri ân">
+                    <span class="envelope-flap" aria-hidden="true"></span>
+                    <span class="envelope-body" aria-hidden="true"></span>
+                    <span class="envelope-text" aria-hidden="true">Mở thư</span>
+                </button>
+            </div>
+
+            <div id="tribute-letter" class="tribute-letter closed" aria-hidden="true">
+                <div class="letter-header">
+                    <i class="fas fa-heart"></i>
+                    <h3>Kính gửi: Thầy Cô kính mến</h3>
+                </div>
+                <div class="stamp" aria-hidden="true"><i class="fas fa-star"></i></div>
+                <button id="close-letter" class="close-letter" aria-label="Đóng thư">✕</button>
+                <div class="letter-body">
+                    <p>
+                        Thưa thầy, kính cô!
+                    </p>
+                    <p>
+                        Ba năm qua, thầy cô không chỉ là người truyền dạy kiến thức, 
+                        mà còn là người dẫn dắt chúng em trên con đường đời. 
+                        Mỗi bài giảng, mỗi lời nhắc nhở, mỗi sự quan tâm đều là 
+                        những món quà vô giá mà thầy cô đã trao cho chúng em.
+                    </p>
+                    <p>
+                        Những lúc chúng em mệt mỏi, thầy cô luôn ở bên động viên. 
+                        Những lúc chúng em sai lầm, thầy cô kiên nhẫn sửa chữa. 
+                        Những lúc chúng em thành công, thầy cô mỉm cười hạnh phúc. 
+                        Thầy cô như ngọn đèn soi sáng con đường phía trước, 
+                        giúp chúng em tự tin bước đi.
+                    </p>
+                    <p>
+                        Dù sau này chúng em đi đến phương trời nào, chúng em 
+                        sẽ mãi nhớ ơn thầy cô. Mỗi thành công của chúng em 
+                        đều có một phần công lao của thầy cô. Chúng em xin 
+                        chân thành cảm ơn thầy cô!
+                    </p>
+                    <p class="signature">
+                        Với lòng biết ơn sâu sắc,<br>
+                        Các học sinh lớp 12
+                    </p>
+                </div>
+                <div class="letter-footer">
+                    <i class="fas fa-heart heart-decoration"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ALBUM ẢNH ==================== -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Album Ảnh</h2>
+            <p class="section-subtitle">Những khoảnh khắc đẹp nhất của chúng ta</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="album.jpg" alt="Kỷ niệm 1">
+                    <div class="gallery-overlay">
+                        <span>Kỷ niệm</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="c12.jpg" alt="Kỷ niệm 2">
+                    <div class="gallery-overlay">
+                        <span>Kỷ niệm</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="c123.jpg" alt="Kỷ niệm 3">
+                    <div class="gallery-overlay">
+                        <span>Kỷ niệm</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="a10 (1).jpg" alt="Kỷ niệm 4">
+                    <div class="gallery-overlay">
+                        <span>Kỷ niệm</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="br.jpg" alt="Kỷ niệm 5">
+                    <div class="gallery-overlay">
+                        <span>Kỷ niệm</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="10c1.jpg" alt="Kỷ niệm 6">
+                    <div class="gallery-overlay">
+                        <span>Kỷ niệm</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="anh10.png" alt="Kỷ niệm 7">
+                    <div class="gallery-overlay">
+                        <span>Kỷ niệm</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="anh12.png" alt="Kỷ niệm 8">
+                    <div class="gallery-overlay">
+                        <span>Kỷ niệm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== LỜI NHẮN GỬI (GOOGLE FORM) ==================== -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Lời Nhắn Gửi</h2>
+            <p class="section-subtitle">Yêu nhau lắm cắn nhau đau, hãy cắn tụi mình ở đây</p>
+            
+            <div class="form-container">
+                <iframe 
+                    src="https://forms.gle/FcxnVwWbVVmB7EoV8" 
+                    width="100%" 
+                    height="600" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0">
+                    Đang tải…
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Lớp 12C10  - Niên khóa 2023-2026</h3>
+                    <p class="footer-quote">"Thanh xuân giống như một cơn mưa rào, dù cho có ướt đẫm ta cũng không hối hận vì đã trải qua."</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p> Báo tường 12C10 - Made by Lục Trà Hoàng Kim  <i class="fas fa-heart"></i></p>
+            </div>
+        </div>
+    </footer>
+
+        <script src="script.js"></script>
+    </body>
+    </html>
